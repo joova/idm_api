@@ -48,16 +48,6 @@ func TestSearch(t *testing.T) {
 	offset := 0
 
 	count := SearchUserCount("hasyim")
-	// scount := strconv.FormatInt(count, 10)
-
-	// page := float64(count) / float64(limit)
-	// page = math.Ceil(page)
-	// spage := strconv.FormatFloat(page, 'f', 0, 64)
-
-	// w.Header().Set("Content-Type", "application/json")
-	// w.Header().Set("Pagination-Count", scount)
-	// w.Header().Set("Pagination-Page", spage)
-	// w.Header().Set("Pagination-Limit", slimit)
 
 	var users []models.User
 	users = SearchUser("hasyim", int64(offset), int64(limit))

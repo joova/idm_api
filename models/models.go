@@ -23,16 +23,23 @@ type User struct {
 type Role struct {
 	ID         primitive.ObjectID `bson:"_id,omitempty" json:"id,omitempty"`
 	Name       string             `bson:"name" json:"name"`
-	Previleges []Previlege        `bson:"previleges" json:"previleges"`
+	Privileges []Privilege        `bson:"previleges" json:"previleges"`
 	Org        primitive.ObjectID `bson:"org,omitempty" json:"org,omitempty"`
 }
 
-// Previlege previlege model
-type Previlege struct {
+// Privilege previlege model
+type Privilege struct {
 	ID       primitive.ObjectID `bson:"_id,omitempty" json:"id,omitempty"`
 	Resource Resource           `bson:"resource" json:"resource"`
-	Action   string             `bson:"action" json:"action"`
+	Action   Action             `bson:"action" json:"action"`
 	Org      primitive.ObjectID `bson:"org,omitempty" json:"org,omitempty"`
+}
+
+// Action action model
+type Action struct {
+	ID   string             `bson:"code,omitempty" json:"code,omitempty"`
+	Name string             `bson:"name" json:"name"`
+	Org  primitive.ObjectID `bson:"org,omitempty" json:"org,omitempty"`
 }
 
 // Resource resource model
