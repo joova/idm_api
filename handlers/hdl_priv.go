@@ -78,6 +78,26 @@ func GetPrivilegeByNameEndpoint(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// DeletePrivilegeEndpoint get a ptype
+func DeletePrivilegeEndpoint(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	id := params["id"]
+	oid, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+
+	// _ = json.NewDecoder(r.Body).Decode(&pcat)
+
+	count := db.DeletePrivilege(oid)
+	res := map[string]int64{"deleted": count}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(res)
+
+}
+
 // GetPrivilegeEndpoint get a privilege
 func GetPrivilegeEndpoint(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
