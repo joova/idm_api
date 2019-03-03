@@ -53,6 +53,20 @@ func UpdateResource(id primitive.ObjectID, resource models.Resource) (int64, err
 	return res.UpsertedCount, nil
 }
 
+// DeleteResource delete resource
+func DeleteResource(id primitive.ObjectID) int64 {
+	log.Println("Delete resource: ", id)
+
+	filter := bson.M{"_id": id}
+	res, err := db.Collection("resources").DeleteOne(context.TODO(), filter)
+	if err != nil {
+		log.Print(err)
+	}
+
+	log.Println("Delete Count : ", res.DeletedCount)
+	return res.DeletedCount
+}
+
 // GetResource get resource
 func GetResource(id primitive.ObjectID) models.Resource {
 	log.Println("Get user:", id)
