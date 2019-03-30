@@ -34,7 +34,7 @@ func UpdateAction(code string, action models.Action) (int64, error) {
 	filter := bson.M{"code": code}
 	data := bson.D{
 		{"$set", bson.D{
-			{"", action.Name},
+			{"name", action.Name},
 		}},
 		{"$currentDate", bson.D{
 			{"lastModified", true},
