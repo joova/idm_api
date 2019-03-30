@@ -53,20 +53,6 @@ func UpdatePrivilege(id primitive.ObjectID, privilege models.Privilege) (int64, 
 	return res.UpsertedCount, nil
 }
 
-// DeletePrivilege get type
-func DeletePrivilege(id primitive.ObjectID) int64 {
-	log.Println("Delete privilege: ", id)
-
-	filter := bson.M{"_id": id}
-	res, err := db.Collection("privileges").DeleteOne(context.TODO(), filter)
-	if err != nil {
-		log.Print(err)
-	}
-
-	log.Println("Delete Count : ", res.DeletedCount)
-	return res.DeletedCount
-}
-
 // GetPrivilege get privilege
 func GetPrivilege(id primitive.ObjectID) models.Privilege {
 	log.Println("Get privilege:", id)

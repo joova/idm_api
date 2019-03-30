@@ -55,20 +55,6 @@ func UpdateUser(id primitive.ObjectID, user models.User) (int64, error) {
 	return res.UpsertedCount, nil
 }
 
-// DeleteUser delete user
-func DeleteUser(id primitive.ObjectID) int64 {
-	log.Println("Delete user: ", id)
-
-	filter := bson.M{"_id": id}
-	res, err := db.Collection("users").DeleteOne(context.TODO(), filter)
-	if err != nil {
-		log.Print(err)
-	}
-
-	log.Println("Delete Count : ", res.DeletedCount)
-	return res.DeletedCount
-}
-
 // GetUser get user
 func GetUser(id primitive.ObjectID) models.User {
 	log.Println("Get user:", id)

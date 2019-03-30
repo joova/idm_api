@@ -23,7 +23,7 @@ type User struct {
 type Role struct {
 	ID         primitive.ObjectID `bson:"_id,omitempty" json:"id,omitempty"`
 	Name       string             `bson:"name" json:"name"`
-	Privileges []Privilege        `bson:"privileges" json:"privileges"`
+	Privileges []Privilege        `bson:"previleges" json:"previleges"`
 	Org        primitive.ObjectID `bson:"org,omitempty" json:"org,omitempty"`
 }
 

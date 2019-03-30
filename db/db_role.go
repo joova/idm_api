@@ -67,20 +67,6 @@ func GetRole(id primitive.ObjectID) models.Role {
 	return role
 }
 
-// DeleteRole delete role
-func DeleteRole(id primitive.ObjectID) int64 {
-	log.Println("Delete role: ", id)
-
-	filter := bson.M{"_id": id}
-	res, err := db.Collection("roles").DeleteOne(context.TODO(), filter)
-	if err != nil {
-		log.Print(err)
-	}
-
-	log.Println("Delete Count : ", res.DeletedCount)
-	return res.DeletedCount
-}
-
 // GetRoleByName get role by role name
 func GetRoleByName(name string) models.Role {
 	log.Println("Get role:", name)

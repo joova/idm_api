@@ -58,7 +58,6 @@ func main() {
 	//action route
 	router.HandleFunc("/api/idm/privs", hdl.GetAllPrivilegeEndpoint).Methods("GET")
 	router.HandleFunc("/api/idm/priv/{id}", hdl.CreatePrivilegeEndpoint).Methods("GET")
-	router.HandleFunc("/api/idm/priv/{id}", hdl.DeletePrivilegeEndpoint).Methods("DELETE")
 	router.HandleFunc("/api/idm/privs/{offset}/{limit}", hdl.GetPagingPrivilegeEndpoint).Methods("GET")
 	router.HandleFunc("/api/idm/privs/{offset}/{limit}/{text}", hdl.SearchPrivilegeEndpoint).Methods("GET")
 	router.HandleFunc("/api/idm/priv", hdl.CreatePrivilegeEndpoint).Methods("POST")
@@ -70,6 +69,6 @@ func main() {
 	corsAllowedOriginsObj := handlers.AllowedOrigins([]string{"*"})
 	corsAllowedHeadersObj := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
 	corsExposedHeadersObj := handlers.ExposedHeaders([]string{"Pagination-Count", "Pagination-Limit", "Pagination-Page"})
-	corsAllowedMethodsObj := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "DELETE", "OPTIONS"})
+	corsAllowedMethodsObj := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"})
 	log.Fatal(http.ListenAndServe(":8000", handlers.CORS(corsAllowedOriginsObj, corsAllowedHeadersObj, corsExposedHeadersObj, corsAllowedMethodsObj)(router)))
 }

@@ -53,20 +53,6 @@ func UpdateOrg(id primitive.ObjectID, org models.Organization) (int64, error) {
 	return res.UpsertedCount, nil
 }
 
-// DeleteOrg get type
-func DeleteOrg(id primitive.ObjectID) int64 {
-	log.Println("Delete org: ", id)
-
-	filter := bson.M{"_id": id}
-	res, err := db.Collection("orgs").DeleteOne(context.TODO(), filter)
-	if err != nil {
-		log.Print(err)
-	}
-
-	log.Println("Delete Count : ", res.DeletedCount)
-	return res.DeletedCount
-}
-
 // GetOrg get org
 func GetOrg(id primitive.ObjectID) models.Organization {
 	log.Println("Get user:", id)
