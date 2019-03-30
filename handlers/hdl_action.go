@@ -38,7 +38,7 @@ func CreateActionEndpoint(w http.ResponseWriter, r *http.Request) {
 // UpdateActionEndpoint update a action
 func UpdateActionEndpoint(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	code := params["code"]
+	code := params["id"]
 
 	var action models.Action
 	decoder := json.NewDecoder(r.Body)
@@ -73,7 +73,7 @@ func GetActionByNameEndpoint(w http.ResponseWriter, r *http.Request) {
 // GetActionEndpoint get a action
 func GetActionEndpoint(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	code := params["code"]
+	code := params["id"]
 
 	var action models.Action
 	_ = json.NewDecoder(r.Body).Decode(&action)
